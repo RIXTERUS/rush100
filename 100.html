@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>замер 0-100</title>
+    
+    
+    <link rel="manifest" href="manifest.json">
+
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Speedometer">
+    <link rel="apple-touch-icon" href="assets/images/icon-192.png">
+    <meta name="theme-color" content="#000000">
+
+    <link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+
+    
+   
+    <main class="content accel-page">
+
+
+    <video id="accel-bg-video" autoplay loop muted playsinline class="bg-video hidden">
+    <source src="assets/images/moving_background_v2.mov">
+</video>
+
+
+        
+        <div class="accel-header">
+            <div id="accel-main-time" class="accel-main-time">0.0s</div>
+            <div id="accel-accuracy-pill" class="accel-pill pill-gray">
+                <span id="accel-pill-text"></span>
+            </div>
+        </div>
+
+        
+        <div class="accel-visual">
+
+            
+            <img id="buffer-10-icon" src="assets/images/10_icon.png" class="buffer-icon hidden" alt="10% Buffer">
+
+            
+            <div id="accel-bar-view" class="accel-bar-container">
+                <div class="accel-bar-track">
+                    <div id="accel-bar-fill" class="accel-bar-fill"></div>
+                </div>
+                <div class="accel-bar-labels">
+                    <span>0</span>
+                    <span>50</span>
+                    <span>100</span>
+                </div>
+            </div>
+
+            
+            <div id="accel-graph-view" class="accel-graph-container hidden">
+                <canvas id="accel-graph-canvas"></canvas>
+            </div>
+        </div>
+
+        
+        <div class="accel-stats">
+            <div class="accel-stat-col">
+                <div id="stat-0-50" class="accel-stat-val">0.00s</div>
+                <div class="accel-stat-label">0-50</div>
+            </div>
+            <div class="accel-stat-divider"></div>
+            <div class="accel-stat-col">
+                <div id="stat-dist" class="accel-stat-val">0m</div>
+                <div class="accel-stat-label">DISTANCE</div>
+            </div>
+            <div class="accel-stat-divider"></div>
+            <div class="accel-stat-col">
+                <div id="stat-time" class="accel-stat-val">--:--</div>
+                <div id="stat-date" class="accel-stat-label">--.--.----</div>
+            </div>
+        </div>
+
+        <div id="accel-recorded-msg" class="accel-recorded-msg hidden">RECORDED</div>
+
+        
+        <div class="accel-controls">
+            <div class="accel-live-accuracy">
+                CURRENT ACCURACY: 
+                <span id="accel-gps-dot" class="signal-dot red"></span> 
+                <span id="accel-live-acc-text">± --m, --s</span>
+            </div>
+            <button id="accel-reset-btn" class="accel-reset-btn">
+                RESET 
+                
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            </button>
+        </div>
+    </main>
+
+    
+    <nav class="bottom-menu">
+        
+        <div class="menu-pill">
+            
+            
+            <a href="index.html" class="nav-item">
+                <img src="assets/images/speedometer_icon.png" alt="Спидометр" class="nav-icon">
+            </a>
+
+            
+            <a href="rides.html" class="nav-item">
+                <img src="assets/images/rides_icon.png" alt="Поездки" class="nav-icon">
+            </a>
+
+            
+            <a href="100.html" class="nav-item active">
+                <img src="assets/images/100_icon.png" alt="0-100" class="nav-icon">
+            </a>
+
+        </div>
+
+        
+        <a href="profile.html" class="nav-item profile-item">
+            <img src="assets/images/profile_icon.png" alt="Профиль" class="nav-icon">
+        </a>
+    </nav>
+
+<script src="script.js?v=1"></script></body>
+</html>

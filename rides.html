@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>RIDES</title>
+    
+    
+    <link rel="manifest" href="manifest.json">
+
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Speedometer">
+    <link rel="apple-touch-icon" href="assets/images/icon-192.png">
+    <meta name="theme-color" content="#000000">
+
+    
+    <link rel="stylesheet" href="style.css?v=1">
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+</head>
+<body>
+
+    
+    <main class="content rides-page">
+        
+        <header class="rides-header">
+            <h1 class="rides-title">RIDES</h1>
+            <div class="rides-datetime" id="current-datetime">00.00.0000 00:00:00</div>
+            <div class="rides-divider"></div>
+        </header>
+
+        
+        <div class="rides-list" id="rides-list">
+            
+        </div>
+    </main>
+
+    
+    <div class="ride-modal hidden" id="ride-modal">
+        <button class="modal-close-btn" id="modal-close-btn">✕</button>
+
+        
+        <div class="modal-top-right-actions">
+            <button class="modal-action-btn" id="modal-export-btn">
+                <img src="assets/images/export_button.png" alt="Export">
+            </button>
+            <button class="modal-action-btn" id="modal-delete-btn">
+                <img src="assets/images/delete_button.png" alt="Delete">
+            </button>
+        </div>
+        
+        
+        <div class="modal-header">
+            <div class="modal-date-time" id="modal-date-time">00.00.0000 00:00</div>
+        </div>
+
+        
+        <div class="trip-grid modal-grid">
+            <div class="grid-item item-top-left">
+                <span class="stat-value" id="modal-top-speed">0</span>
+                <div class="stat-header">
+                    <span class="stat-label">TOP SPEED</span>
+                    <img src="assets/images/topspeed_logo.png" alt="Top Speed" class="stat-icon">
+                </div>
+            </div>
+            <div class="grid-item item-top-right">
+                <span class="stat-value" id="modal-trip-time">00:00:00</span>
+                <div class="stat-header">
+                    <img src="assets/images/time_logo.png" alt="Time" class="stat-icon">
+                    <span class="stat-label">TIME</span>
+                </div>
+            </div>
+            <div class="grid-item item-bottom-left">
+                <div class="stat-header">
+                    <span class="stat-label">AVERAGE</span>
+                    <img src="assets/images/median_speed.png" alt="Average Speed" class="stat-icon">
+                </div>
+                <span class="stat-value" id="modal-avg-speed">0</span>
+            </div>
+            <div class="grid-item item-bottom-right">
+                <div class="stat-header">
+                    <img src="assets/images/length.png" alt="Distance" class="stat-icon">
+                    <span class="stat-label">DISTANCE</span>
+                </div>
+                <span class="stat-value" id="modal-trip-distance">0.0</span>
+            </div>
+        </div>
+
+        
+        <div class="map-wrapper" id="map-wrapper">
+            <div id="map-container" class="map-container"></div>
+            
+            <div class="map-controls">
+                <button class="map-btn" id="map-fullscreen-btn">
+                    <img src="assets/images/fullscreen_button.png" id="fullscreen-img" alt="Fullscreen">
+                    <svg id="fullscreen-close-svg" class="hidden map-btn-svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+                <button class="map-btn" id="map-location-btn">
+                    <img src="assets/images/location_button.png" alt="Center">
+                </button>
+            </div>
+        </div>
+
+        
+        <div class="graph-wrapper">
+            <canvas id="speed-graph-canvas"></canvas>
+        </div>
+    </div>
+
+    
+    <nav class="bottom-menu">
+        <div class="menu-pill">
+            <a href="index.html" class="nav-item">
+                <img src="assets/images/speedometer_icon.png" alt="Спидометр" class="nav-icon">
+            </a>
+            <a href="rides.html" class="nav-item active">
+                <img src="assets/images/rides_icon.png" alt="Поездки" class="nav-icon">
+            </a>
+            <a href="100.html" class="nav-item">
+                <img src="assets/images/100_icon.png" alt="0-100" class="nav-icon">
+            </a>
+        </div>
+        <a href="profile.html" class="nav-item profile-item">
+            <img src="assets/images/profile_icon.png" alt="Профиль" class="nav-icon">
+        </a>
+    </nav>
+
+    
+    <script src="script.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Profile</title>
+    
+    
+    <link rel="manifest" href="manifest.json">
+
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Speedometer">
+    <link rel="apple-touch-icon" href="assets/images/icon-192.png">
+    <meta name="theme-color" content="#000000">
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+    <link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+
+    
+    <main class="content profile-page">
+        
+        <div class="profile-card-wrapper">
+            
+            
+            <div class="profile-photo-container" id="profile-photo-btn">
+                <div class="glare-layer"></div>
+                <img id="profile-img" src="" alt="">
+                <input type="file" id="profile-file-input" accept="image/*" class="hidden">
+            </div>
+
+            
+            <div class="profile-card">
+                <div class="glare-layer"></div>
+                
+                <div class="profile-name-container">
+                    <h2 id="profile-name-display">Username</h2>
+                    <input type="text" id="profile-name-input" class="hidden" value="user_pro12" maxlength="15">
+                </div>
+                
+                <div class="profile-max-speed">
+                    <p>HIGHEST SPEED EVER REACHED:</p>
+                    <div class="speed-badge">
+                        <span class="speed-badge-text">122</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="settings-section">
+            
+            
+            <div class="settings-box">
+                <span class="settings-box-title">IPHONE RECOMMENDED</span>
+                
+                <div class="setting-item">
+                    <span>Always-On</span>
+                    <label class="ios-switch">
+                        <input type="checkbox" id="set-always-on">
+                        <span class="ios-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <span>Pict-in-pict</span>
+                    <label class="ios-switch">
+                        <input type="checkbox" id="set-pip">
+                        <span class="ios-slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            
+<div class="setting-item standalone-setting">
+    <span>10%-Buffer</span>
+    <div class="setting-controls">
+        
+        
+        <div class="info-wrapper" id="info-wrapper">
+            <img src="assets/images/info.png" alt="Info" class="info-icon" id="buffer-info-btn">
+            
+            
+            <div id="info-popup" class="info-popup hidden">
+                <button class="info-close-btn" id="info-close-btn">✕</button>
+                <p>According to the "UN Regulation No. 39" your speedometer shows you ~10% more comparing to your real speed. 
+                    Our GPS Speedometer is 99% accurate. You can adjust the GPS speed to be closer to the speed shown on your car's speedometer.
+                This will be only used for 0-100 acceleration test. </p>
+            </div>
+        </div>
+
+        <label class="ios-switch">
+            <input type="checkbox" id="set-buffer">
+            <span class="ios-slider"></span>
+        </label>
+    </div>
+</div>
+
+            
+            <div class="rotation-warning">
+                <span>PLEASE LOCK THE SCREEN ROTATION</span>
+                <img src="assets/images/rotation_lock.png" alt="Lock">
+            </div>
+
+            
+            <button class="open-trip-btn" id="open-trip-btn">
+                OPEN TRIP
+                <img src="assets/images/import_button.png" alt="Open Trip">
+            </button>
+            
+        </div>
+
+
+        <input type="file" id="import-trip-input" accept=".txt" class="hidden">
+
+        
+        <div class="ride-modal hidden" id="ext-ride-modal">
+            <button class="modal-close-btn" id="ext-modal-close-btn">✕</button>
+            
+            <div class="modal-header">
+                
+                <div class="ext-modal-user-info">
+                    <img src="assets/images/default_avatar.png" id="ext-modal-avatar" alt="Avatar">
+                    <span id="ext-modal-username">Username</span>
+                </div>
+                <div class="modal-date-time" id="ext-modal-date-time">00.00.0000 00:00</div>
+            </div>
+
+            <div class="trip-grid modal-grid">
+                <div class="grid-item item-top-left">
+                    <span class="stat-value" id="ext-modal-top-speed">0</span>
+                    <div class="stat-header">
+                        <span class="stat-label">TOP SPEED</span>
+                        <img src="assets/images/topspeed_logo.png" alt="Top Speed" class="stat-icon">
+                    </div>
+                </div>
+                <div class="grid-item item-top-right">
+                    <span class="stat-value" id="ext-modal-trip-time">00:00:00</span>
+                    <div class="stat-header">
+                        <img src="assets/images/time_logo.png" alt="Time" class="stat-icon">
+                        <span class="stat-label">TIME</span>
+                    </div>
+                </div>
+                <div class="grid-item item-bottom-left">
+                    <div class="stat-header">
+                        <span class="stat-label">AVERAGE</span>
+                        <img src="assets/images/median_speed.png" alt="Average Speed" class="stat-icon">
+                    </div>
+                    <span class="stat-value" id="ext-modal-avg-speed">0</span>
+                </div>
+                <div class="grid-item item-bottom-right">
+                    <div class="stat-header">
+                        <img src="assets/images/length.png" alt="Distance" class="stat-icon">
+                        <span class="stat-label">DISTANCE</span>
+                    </div>
+                    <span class="stat-value" id="ext-modal-trip-distance">0.0</span>
+                </div>
+            </div>
+
+            <div class="map-wrapper" id="ext-map-wrapper">
+                <div id="ext-map-container" class="map-container"></div>
+                <div class="map-controls">
+                    <button class="map-btn" id="ext-map-fullscreen-btn">
+                        <img src="assets/images/fullscreen_button.png" id="ext-fullscreen-img" alt="Fullscreen">
+                        <svg id="ext-fullscreen-close-svg" class="hidden map-btn-svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                    <button class="map-btn" id="ext-map-location-btn">
+                        <img src="assets/images/location_button.png" alt="Center">
+                    </button>
+                </div>
+            </div>
+
+            <div class="graph-wrapper">
+                <canvas id="ext-speed-graph-canvas"></canvas>
+            </div>
+        </div>
+
+    </main>
+
+  
+
+        
+ 
+
+    
+    <nav class="bottom-menu">
+        <div class="menu-pill">
+            <a href="index.html" class="nav-item">
+                <img src="assets/images/speedometer_icon.png" alt="Спидометр" class="nav-icon">
+            </a>
+            <a href="rides.html" class="nav-item">
+                <img src="assets/images/rides_icon.png" alt="Поездки" class="nav-icon">
+            </a>
+            <a href="100.html" class="nav-item">
+                <img src="assets/images/100_icon.png" alt="0-100" class="nav-icon">
+            </a>
+        </div>
+        <a href="profile.html" class="nav-item profile-item active">
+            <img src="assets/images/profile_icon.png" alt="Профиль" class="nav-icon">
+        </a>
+    </nav>
+
+    <script src="script.js?v=7"></script>
+</body>
+</html>

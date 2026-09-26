@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Speedometer</title>
+    
+    
+    <link rel="manifest" href="manifest.json">
+
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Speedometer">
+    <link rel="apple-touch-icon" href="assets/images/icon-192.png">
+    <meta name="theme-color" content="#000000">
+
+    <link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+
+    
+    <main class="content speedometer-page">
+        
+        
+        <div class="speed-display">
+            <span class="speed-value" id="current-speed">0</span>
+            
+        <img src="assets/images/aod_icon.png" id="aod-indicator" class="aod-icon hidden" alt="AOD">
+        </div>
+        <div id="independent-buffer-speed" class="hidden">0</div>
+
+        
+        <div class="trip-grid">
+            
+            
+            <div class="grid-item item-top-left">
+                <span class="stat-value" id="top-speed">--</span>
+                <div class="stat-header">
+                    <span class="stat-label">TOP SPEED</span>
+                    <img src="assets/images/topspeed_logo.png" alt="Top Speed" class="stat-icon">
+                </div>
+            </div>
+
+            
+            <div class="grid-item item-top-right">
+                <span class="stat-value" id="trip-time">--</span>
+                <div class="stat-header">
+                    <img src="assets/images/time_logo.png" alt="Time" class="stat-icon">
+                    <span class="stat-label">TIME</span>
+                </div>
+            </div>
+
+            
+            <div class="grid-item item-bottom-left">
+                <div class="stat-header">
+                    <span class="stat-label">AVERAGE</span>
+                    <img src="assets/images/median_speed.png" alt="Average Speed" class="stat-icon">
+                </div>
+                <span class="stat-value" id="avg-speed">--</span>
+            </div>
+
+            
+            <div class="grid-item item-bottom-right">
+                <div class="stat-header">
+                    <img src="assets/images/length.png" alt="Distance" class="stat-icon">
+                    <span class="stat-label">DISTANCE</span>
+                </div>
+                <span class="stat-value" id="trip-distance">--</span>
+            </div>
+
+            
+            <div class="signal-pill">
+                <span class="signal-text">SIGNAL</span>
+                <span class="signal-dot red" id="gps-dot"></span>
+            </div>
+
+        </div>
+
+        
+        <div class="control-panel">
+            <div class="action-buttons">
+                
+                <button class="btn-record" id="main-btn">
+                    <img src="assets/images/record_icon.png" alt="REC" id="main-btn-img">
+                </button>
+
+                
+                <button class="btn-pause hidden" id="pause-btn">
+                    <img src="assets/images/pause_button.png" alt="Pause" id="pause-btn-img">
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    
+    <nav class="bottom-menu">
+        <div class="menu-pill">
+            <a href="index.html" class="nav-item active">
+                <img src="assets/images/speedometer_icon.png" alt="Speedometer" class="nav-icon">
+            </a>
+            <a href="rides.html" class="nav-item">
+                <img src="assets/images/rides_icon.png" alt="Rides" class="nav-icon">
+            </a>
+            <a href="100.html" class="nav-item">
+                <img src="assets/images/100_icon.png" alt="0-100" class="nav-icon">
+            </a>
+        </div>
+        <a href="profile.html" class="nav-item profile-item">
+            <img src="assets/images/profile_icon.png" alt="Profile" class="nav-icon">
+        </a>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
